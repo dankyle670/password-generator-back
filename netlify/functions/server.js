@@ -14,7 +14,7 @@ const serverless = require('serverless-http');
 app.use(bodyParser.json());
 
 app.use(cors({
-  origin: '*',
+  origin: 'https://password-gen-front.netlify.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -98,12 +98,12 @@ app.post('/api/user', async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-    const newUser = new User({ username, email, password: hashedPassword }); // Updated here
+    const newUser = new Puser({ username, email, password: hashedPassword }); // Updated here
     await newUser.save();
 
-    const token = createVerificationToken(newUser._id);
+    //const token = createVerificationToken(newUser._id);
     console.log('THE TOKEN:', token);
-    await sendVerificationEmail(email, token);
+    //await sendVerificationEmail(email, token);
 
     res.status(201).json({ message: 'User created successfully. Please check your email to verify your account.' });
   } catch (error) {

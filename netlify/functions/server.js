@@ -7,6 +7,8 @@ const app = express();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
+const serverless = require('serverless-http');
+
 
 // Middleware
 app.use(bodyParser.json());

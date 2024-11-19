@@ -6,6 +6,7 @@ const cors = require('cors');
 const app = express();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
 
 // Middleware
 app.use(bodyParser.json());

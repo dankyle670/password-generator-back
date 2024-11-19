@@ -42,7 +42,7 @@ const userSchema = new mongoose.Schema({
 });
 
 
-const user = mongoose.model('user', userSchema);
+const Puser = mongoose.model('Puser', userSchema);
 
 // Generate verification token
 const createVerificationToken = (userId) => {
@@ -88,11 +88,11 @@ const sendVerificationEmail = async (email, token) => {
 };
 
 // routes
-app.post('/api/users', async (req, res) => {
+app.post('/api/user', async (req, res) => {
   const saltRounds = 10;
   const { username, email, password } = req.body;
   try {
-    const existingUser = await user.findOne({ email });
+    const existingUser = await Puser.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'Email already exists' });
     }
